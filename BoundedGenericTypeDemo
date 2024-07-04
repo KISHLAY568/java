@@ -1,0 +1,29 @@
+import abstractClassesAndInterfaces.GeometricObject;
+import abstractClassesAndInterfaces.Rectangle;
+import abstractClassesAndInterfaces.Circle;
+
+// We want to bound E. E can only be replaced by specific classes.
+
+public class BoundedGenericTypeDemo {
+
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+
+Rectangle rectangle = new Rectangle(2, 2);
+Circle circle = new Circle(2);
+
+// Only geometric Objects need this functionality
+System.out.println("Same area? " + equalArea(rectangle, circle));
+}
+
+// Unbounded generic type: E is equivalent to <E extends Object>
+// Bounded E: which can only be replaced by few classes only (eg: G.O and its subclasses)
+
+// E -> Object: Whether Object is a subclass of G.O? No
+// E -> String: No
+// E -> Rectangle: Yes
+public static <E extends GeometricObject> boolean equalArea(E object1, E object2) {
+return object1.getArea() == object2.getArea();
+}
+
+}

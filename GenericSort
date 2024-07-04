@@ -1,0 +1,59 @@
+public class GenericSort {
+
+public static void main(String[] args) {
+
+//Create an integer array
+Integer[] intArray = {2, 4, 3};
+
+Double[] doubleArray = {2.2, 4.3, 3.4};
+
+Character[] charArray = {'a', 'J', 'r'};
+
+String[] stringArray = {"Tom", "Harsh", "Ram"};
+
+sort(intArray);
+sort(doubleArray);
+sort(charArray);
+sort(stringArray);
+
+printList(stringArray);
+printList(doubleArray);
+printList(charArray);
+printList(intArray);
+
+}
+
+// Sort an array of comparable objects
+public static <E extends Comparable<E>> void sort(E[] list) {
+E currentMin;
+int currentMinIndex;
+
+for(int i=0; i<list.length - 1; i++ ) {
+// Find the minimum in the list[i+1...list.length-2]
+currentMin = list[i];
+currentMinIndex = i;
+
+for(int j = i+1; j<list.length; j++) {
+if(currentMin.compareTo(list[j]) > 0) {
+currentMin = list[j];
+currentMinIndex = j;
+}
+}
+
+// Swap list[i] and list[j] with list[currentMinIndex] if necessary
+if(currentMinIndex != i) {
+list[currentMinIndex] = list[i];
+list[i] = currentMin;
+}
+}
+}
+
+// Printing the array of objects
+public static void printList(Object[] list) {
+for(int i=0; i<list.length; i++) {
+System.out.print(list[i] + " ");
+}
+System.out.println();
+}
+
+}
